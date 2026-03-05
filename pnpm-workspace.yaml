@@ -1,0 +1,1 @@
+# removed ignoredBuiltDependencies so Electron and related packages can run their build/postinstall scripts

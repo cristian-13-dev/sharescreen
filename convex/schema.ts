@@ -1,11 +1,17 @@
 import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
+import { authTables } from "@convex-dev/auth/server"
 
 export default defineSchema({
-  users: defineTable({
+  ...authTables,
+
+  profiles: defineTable({
+    subject: v.string(),        // identity.subject
     username: v.string(),
     createdAt: v.number(),
-  }).index("by_username", ["username"]),
+  })
+    .index("by_subject", ["subject"])
+    .index("by_username", ["username"]),
 
   rooms: defineTable({
     name: v.optional(v.string()),
@@ -23,7 +29,7 @@ export default defineSchema({
 
   messages: defineTable({
     roomId: v.id("rooms"),
-    userId: v.id("users"),
+    userSubject: v.string(),
     text: v.string(),
     createdAt: v.number(),
   })

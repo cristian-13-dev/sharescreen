@@ -16,10 +16,13 @@
     "dist:linux": "pnpm transpile:electron && pnpm build && electron-builder --linux --x64"
   },
   "dependencies": {
+    "@auth/core": "^0.37.0",
+    "@convex-dev/auth": "^0.0.91",
     "@tailwindcss/vite": "^4.2.1",
     "convex": "^1.32.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-router-dom": "^7.13.1",
     "tailwindcss": "^4.2.1"
   },
   "devDependencies": {

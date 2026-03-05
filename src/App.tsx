@@ -1,11 +1,24 @@
-import './App.css'
+import { Navigate, Route, Routes } from "react-router-dom";
+import { Authenticated, Unauthenticated } from "convex/react";
+import Login from "./Login";
+import ChatPage from "./ChatPage";
 
-function App() {
+export default function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Heeeeeeeellooo!</h1>
-    </>
-  )
-}
+      <Unauthenticated>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        </Routes>
+      </Unauthenticated>
 
-export default App
+      <Authenticated>
+        <Routes>
+          <Route path="/chat" element={<ChatPage />} />
+          <Route path="*" element={<Navigate to="/chat" replace />} />
+        </Routes>
+      </Authenticated>
+    </>
+  );
+}
