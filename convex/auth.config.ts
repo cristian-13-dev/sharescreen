@@ -1,10 +1,8 @@
-import { convexAuth } from "@convex-dev/auth/server";
-import Email from "@auth/core/providers/email";
-
-export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
+export default {
   providers: [
-    Email({
-      from: "noreply@localhost.dev",
-    }),
+    {
+      domain: process.env.CONVEX_SITE_URL,
+      applicationID: "convex",
+    },
   ],
-});
+};
