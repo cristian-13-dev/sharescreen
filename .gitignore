@@ -13,6 +13,10 @@ dist-react
 dist-electron
 dist-ssr
 *.local
+.env
+.env*
+
+convex/_generated
 
 # Editor directories and files
 .vscode/*
